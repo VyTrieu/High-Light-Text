@@ -114,6 +114,7 @@ function goToChapter() {
         highLight(obj, regex);
       }
       else {
+        found = false;
         highLight(obj, regex);
       }
     }
