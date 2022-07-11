@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/496fd1e094.js"></script>
+  <link rel="stylesheet" href="POST_TEMPLATE.css" />
+  <script src="POST_TEMPLATE.js"></script>
+  <title>POST TEMPLATE</title>
+</head>
+
+<body>
+  <br />
+  <div id="vol_1" class="listChapter" style="display: none">
+    <div class="listVol">Quyển 1</div> <br/>
+    <a href=""> Chương 1 - Sắc đỏ thắm của ngày hôm qua </a><br/>
+    <a href=""> Chương 2 - Nói về hạnh phúc </a><br/>
+    <a href=""> Chương 3 - Đèn lồng pha lê </a><br/>
+    <a href=""> Chương 4 - Đêm đầy sao và Cam mật </a><br/>
+    <a href=""> Chương 5 - Ngày làm việc </a><br/>
+    <a href=""> Chương 6 - Chợ Chu Ca </a><br/>
+    <a href=""> Chương 7 - Ngày làm việc 2 </a><br/>
+    <a href=""> Chương 8 - Lò sưởi ấm áp và cờ bạc </a><br/>
+    <a href=""> Chương 8.5 - Ngoại truyện. Một ngày làm việc </a><br/>
+  </div>
+
+  <div id="vol_2" class="listChapter" style="display: none">
+    <div class="listVol">Quyển 2</div> <br/>
+    <a href=""> Chương 9 -  Cú sừng và chuyện xưa </a><br/>
+    <a href=""> Chương 10 - Những kẻ cầu toàn và việc nhuộm vải </a><br/>
+    <a href=""> Chương 11 - Cơ sở hiệp hội</a><br/>
+    <a href=""> Chương 12 - Đá tảng và đá chống đỡ </a><br/>
+    <a href=""> Chương 13 - Thợ làm đẹp trong nhà trứng </a><br/>
+    <a href=""> Chương 14 - Cà phê và bánh nho khô </a><br/>
+    <a href=""> Chương 14.5 - Những thùng rượu dâu tằm </a><br/>
+  </div>
+
+  <div id="vol_3" class="listChapter" style="display: block">
+    <div class="listVol">Quyển 3</div> <br/>
+    <a href=""> Chương 15.1 - Một ngày thật dài. Dân cư ở phố Mật Ong </a><br/>
+    <a href=""> Chương 15.2 - Một ngày thật dài. Julep và lối đi dưới lòng đất </a><br/>
+    <a href=""> Chương 15.3 - Một ngày thật dài. Kho rượu bí mật </a><br/>
+    <a href=""> Chương 15.4 - Một ngày thật dài. Mấy bay giấy và bom khói </a><br/>
+    <a href=""> Chương 15.5 - Một ngày thật dài. Ánh trăng và những hồi ức </a><br/>
+    <a href=""> Chương 16 - Bậc thang trên những nhánh cây </a><br/>
+    <a href=""> Chương 17 - Ngày nghỉ </a><br/>
+    <a href=""> Chương 18 - Hương thơm của Canelé </a><br/>
+    <a href=""> Chương 19 - Chân dung của nụ cười </a><br/>
+    <a href=""> Chương 19.5 - Ngoại truyện v03 </a><br/>
+  </div>
+
+  <div class="pagination" id="pagination" style="text-align: center">
+    <ul></ul>
+  </div>
+
+  <div class="form" style="text-align: center">
+    <input type="text" id="chapter" autocomplete="off" onkeydown="getEnter(this)"
+      placeholder="Nhập số chương muốn đọc" />
+    <button onclick="goToChapter()"><i class="fas fa-book-open"></i></button><br/>
+    <span class="rosanote">Bạn có thể thêm .1, .2, .3, ... phía sau nếu kiếm không ra nhé. Ví dụ 30.1, 30.2, 1.5</span>
+  </div>
+
+  <br />
+
+  <script>
+    var str = "vol_";
+    const element = document.querySelector(".pagination ul");
+    var totalPages = 3; //tổng trang
+    var page = 3; //số vol muốn hiện trên thanh pagination
+    element.innerHTML = createPagination(totalPages, page);
+  </script>
+  
+</body>
+</html>

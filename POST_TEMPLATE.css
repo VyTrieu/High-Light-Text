@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
+
+.introduce,
+.form {
+  position: center;
+  font-family: "Krub", sans-serif;
+  color: black;
+  font-size: 17px;
+}
+
+.listVol {
+  font-family: "Style Script", cursive;
+  font-size: 26px;
+  font-weight: bold;
+  color: black;
+}
+
+.listChapter {
+  opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.3s;
+  font-family: "Krub", sans-serif;
+  color: black;
+  text-align: center;
+  font-size: 17px;
+}
+
+.listChapter a {
+  font-family: "Krub", sans-serif;
+  font-size: 17px;
+  text-align: center;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.listChapter a:visited {
+  color: black;
+}
+
+.listChapter a:hover {
+  color: #FF6363;
+}
+
+.highlight:hover {
+  border-bottom: 2px dashed #FF6363;
+}
+
+.highlight {
+  border-bottom: 2px dashed #576F72;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.pagination li {
+  font-family: "Krub", sans-serif;
+  font-size: 17px;
+  display: inline;
+  text-align: center;
+  color: black;
+  padding: 8px 8px;
+  text-decoration: none;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}
+.pagination li:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.pagination li.active{
+  color: #FF6363;
+}
+
+.form input {
+  text-align: center;
+  font-size: 17px;
+  font-family: "Krub", sans-serif;
+  border: none;
+  border-bottom: 2px solid lightgrey;
+  outline: none;
+  transition: border-bottom 0.5s;
+}
+
+.form input:focus {
+  border-bottom: 2px solid #FF6363;
+  outline: none;
+}
+
+.form input::placeholder {
+  text-align: left;
+  font-size: 15px;
+}
+
+.form button {
+  z-index: 2;
+  border: 2px solid #FF6363;
+  padding: 0.1rem 1.5rem;
+  background-color: white;
+  color: #FF6363;
+  cursor: pointer;
+  transition: border-color 0.5s, background-color 0.5s, color 0.5s;
+}
+
+.form button:hover {
+  background-color: #FF6363;
+  border-color: transparent;
+  color: white;
+}
+
+.rosanote {
+  font-family: "Krub", sans-serif;
+  font-size: 15px;
+  color: #7F8487;
+}
