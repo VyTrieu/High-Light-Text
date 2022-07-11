@@ -102,11 +102,15 @@ function goToChapter() {
   if (chapter == 0) {
     alert("Vui lòng nhập số chương cần đọc");
     found = true;
-  } else {
+  }
+  
+  if (chapter!= 0) {
     for (let obj of content) {
       if (obj.innerText.search(regex) > 0) {
         page = parseInt(obj.id.substring(obj.id.length - 1));
         found = true;
+        element.innerHTML = createPagination(totalPages, page);
+        show("vol_" + page);
         highLight(obj, regex);
       }
       else {
@@ -114,11 +118,10 @@ function goToChapter() {
       }
     }
   }
+
   if (found == false) {
     alert("Chương bạn kiếm hiện không có");
   }
-  element.innerHTML = createPagination(totalPages, page);
-  show("vol_" + page);
 }
 
 function getEnter(e) {
