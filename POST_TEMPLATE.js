@@ -88,7 +88,6 @@ function highLight(chapter, regex) {
     else {
       array[i].classList.remove("highlight");
     }
-    console.log(array[i]);
   }
 }
 
@@ -114,7 +113,6 @@ function goToChapter() {
         highLight(obj, regex);
       }
       else {
-        found = false;
         highLight(obj, regex);
       }
     }
