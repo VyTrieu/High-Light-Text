@@ -95,14 +95,10 @@ function highLight(chapter, regex) {
 function goToChapter() {
   let found = false;
   var content = document.querySelectorAll(".listChapter");
-  let chapter = "Chương " + document.getElementById("chapter").value;
-  let strRaw = String.raw `(${chapter}\s).*`;
+  let chapter = document.getElementById("chapter").value;
+  let strRaw = String.raw `Chương\s(${chapter}\s).*`;
   let regex = new RegExp(strRaw,'gi');
-
-  if (chapter == "Chương ") {
-    chapter = 0;
-  }
-
+ 
   if (chapter == 0) {
     alert("Vui lòng nhập số chương cần đọc");
     found = true;
