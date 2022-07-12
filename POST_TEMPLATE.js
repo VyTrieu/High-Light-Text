@@ -108,7 +108,6 @@ function goToChapter() {
       if (obj.innerText.search(regex) > 0) {
         page = parseInt(obj.id.substring(obj.id.length - 1));
         found = true;
-        element.innerHTML = createPagination(totalPages, page);
         show("vol_" + page);
         highLight(obj, regex);
       }
@@ -116,6 +115,7 @@ function goToChapter() {
         highLight(obj, regex);
       }
     }
+    element.innerHTML = createPagination(totalPages, page);
   }
 
   if (found == false) {
