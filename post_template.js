@@ -19,15 +19,15 @@ function createPagination(totalPages, page) {
   }
 
   // hiện bao nhiêu trang trước trang hiện tại, lưu ý chỉ áp dụng cho tổng trang & trang từ 5 trở lên
-  if (page == totalPages) {
+  if (page == totalPages && totalPages >= 5 && page >=5) {
     beforePage = beforePage - 2;
-  } else if (page == totalPages - 1) {
+  } else if (page == totalPages - 1 && totalPages >= 5 && page >=5) {
     beforePage = beforePage - 1;
   }
   // hiện bao nhiêu trang sau trang hiện tại, lưu ý chỉ áp dụng cho tổng trang & trang từ 5 trở lên
-  if (page == 1) {
+  if (page == 1 && totalPages >= 5 && page >=5) {
     afterPage = afterPage + 2;
-  } else if (page == 2) {
+  } else if (page == 2 && totalPages >= 5 && page >=5) {
     afterPage = afterPage + 1;
   }
 
