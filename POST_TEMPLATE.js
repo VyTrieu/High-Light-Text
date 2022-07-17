@@ -6,12 +6,12 @@ function createPagination(totalPages, page) {
 
   if (page > 1) {
     //hiện nút lùi về nếu trang hiện tại lớn hơn 1
-    liTag += `<li id= "#vol_${page - 1}" onclick="show(this.id);createPagination(totalPages, ${page - 1})">|◁</li>`;
+    liTag += `<li onclick="show(${page - 1});createPagination(totalPages, ${page - 1})">|◁</li>`;
   }
 
   if (page > 2 && totalPages >= 5) {
     //trang hiện tại lớn hơn 2 thì hiện vol. 1 đầu tiên
-    liTag += `<li id= "#vol_1" onclick="show(this.id);createPagination(totalPages, 1)">Vol. 1</li>`;
+    liTag += `<li onclick="show(1);createPagination(totalPages, 1)">Vol. 1</li>`;
     if (page > 3 && totalPages > 5) {
       //trang hiện tại lớn hơn 3 và tổng trang > 5 thì hiện ... phía trước
       liTag += `<li>...</li>`;
@@ -48,7 +48,7 @@ function createPagination(totalPages, page) {
       //còn lại xóa class active
       active = "";
     }
-    liTag += `<li id= "#vol_${i}" class="${active}" onclick="show(this.id); createPagination(totalPages, ${i})">Vol. ${i}</li>`;
+    liTag += `<li class="${active}" onclick="show(${i}); createPagination(totalPages, ${i})">Vol. ${i}</li>`;
   }
 
   if (page < totalPages - 1 && totalPages >= 5) {
@@ -57,26 +57,27 @@ function createPagination(totalPages, page) {
       //thêm ... khi trang hiện tại < tổng trang -2 và tổng trang > 5
       liTag += `<li>...</li>`;
     }
-    liTag += `<li id= "#vol_${totalPages}" onclick="show(this.id); createPagination(totalPages, ${totalPages})">Vol. ${totalPages}</li>`;
+    liTag += `<li onclick="show(${totalPages}); createPagination(totalPages, ${totalPages})">Vol. ${totalPages}</li>`;
   }
 
   if (page < totalPages) {
     //trang hiện tại < tổng trang --> hiện next button
-    liTag += `<li id= "#vol_${page + 1}" onclick="show(this.id); createPagination(totalPages, ${page + 1})">▷|</li>`;
+    liTag += `<li onclick="show(${page + 1}); createPagination(totalPages, ${page + 1})">▷|</li>`;
   }
   element.innerHTML = liTag; //cập nhật class active
   return liTag;
 }
 
 function show(vol) {
-  vol = document.getElementById(vol.substr(vol.length - 5));
+  let temp;
+  vol = "vol_" + vol;
   for (let i = 1; i <= totalPages; i++) {
-    let temp = str + i;
+    temp = "vol_" + i;
     if (temp != vol) {
       document.getElementById(temp).style.display = "none";
     }
   }
-  document.getElementById(vol.id).style.display = "block";
+  document.getElementById(vol).style.display = "block";
 }
 
 function highLight(chapter, regex) {
@@ -95,20 +96,21 @@ function goToChapter() {
   let found = false;
   var content = document.querySelectorAll(".listChapter");
   let chapter = document.getElementById("chapter").value;
-  let strRaw = String.raw `Chương\s(${chapter}\s).*`;
+  var strRaw = String.raw `${str}\s(${chapter}\s).*`;
   let regex = new RegExp(strRaw,'gi');
- 
-  if (chapter == 0) {
+
+  if (chapter == "") {
     alert("Vui lòng nhập số chương cần đọc");
+    chapter = 0;
     found = true;
   }
   
   if (chapter!= 0) {
     for (let obj of content) {
       if (obj.innerText.search(regex) > 0) {
-        page = parseInt(obj.id.substring(obj.id.length - 1));
+        page = parseInt(obj.id.match(/\d+/gi)[0]);
         found = true;
-        show("vol_" + page);
+        show(page);
         highLight(obj, regex);
       }
       else {
