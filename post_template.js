@@ -1,5 +1,5 @@
 function createPagination(totalPages, page) {
-  let liTag;
+  let liTag="";
   let active;
   let beforePage = page - 1;
   let afterPage = page + 1;
