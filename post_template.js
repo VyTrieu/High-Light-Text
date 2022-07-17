@@ -101,11 +101,10 @@ function goToChapter() {
 
   if (chapter == "") {
     alert("Vui lòng nhập số chương cần đọc");
-    chapter = 0;
     found = true;
   }
   
-  if (chapter!= 0) {
+  if (chapter!= "") {
     for (let obj of content) {
       if (obj.innerText.search(regex) > 0) {
         page = parseInt(obj.id.match(/\d+/gi)[0]);
