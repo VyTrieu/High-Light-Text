@@ -1,12 +1,16 @@
+//Import script sau vào file chung để dùng hộp cảnh báo nha
+//<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 function createPagination(totalPages, page) {
-  let liTag ='';
+  let liTag = "";
   let active;
   let beforePage = page - 1;
   let afterPage = page + 1;
 
   if (page > 1) {
     //hiện nút lùi về nếu trang hiện tại lớn hơn 1
-    liTag += `<li onclick="show(${page - 1});createPagination(totalPages, ${page - 1})">|◁</li>`;
+    liTag += `<li onclick="show(${page - 1});createPagination(totalPages, ${page - 1
+      })">|◁</li>`;
   }
 
   if (page > 2 && totalPages >= 5) {
@@ -62,7 +66,8 @@ function createPagination(totalPages, page) {
 
   if (page < totalPages) {
     //trang hiện tại < tổng trang --> hiện next button
-    liTag += `<li onclick="show(${page + 1}); createPagination(totalPages, ${page + 1})">▷|</li>`;
+    liTag += `<li onclick="show(${page + 1}); createPagination(totalPages, ${page + 1
+      })">▷|</li>`;
   }
   element.innerHTML = liTag; //cập nhật class active
   return liTag;
@@ -83,10 +88,9 @@ function show(vol) {
 function highLight(chapter, regex) {
   let array = chapter.getElementsByTagName("a");
   for (let i = 0; i <= array.length - 1; i++) {
-    if (array[i].innerText.search(regex) == 0){
+    if (array[i].innerText.search(regex) == 0) {
       array[i].classList.add("highlight");
-    }
-    else {
+    } else {
       array[i].classList.remove("highlight");
     }
   }
@@ -94,25 +98,30 @@ function highLight(chapter, regex) {
 
 function goToChapter() {
   let found = false;
-  var content = document.querySelectorAll(".listChapter");
+  let content = document.querySelectorAll(".listChapter");
   let chapter = document.getElementById("chapter").value;
-  var strRaw = String.raw `${str}\s(${chapter}\s).*`;
-  let regex = new RegExp(strRaw,'gi');
+  let strRaw = String.raw`${str}\s(${chapter}\s).*`;
+  let regex = new RegExp(strRaw, "gi");
+  let isNan = isNaN(parseInt(chapter));
 
-  if (chapter == "") {
-    alert("Vui lòng nhập số chương cần đọc");
+  if (chapter == "" || isNan == true) {
+    swal({
+      title: "ERROR!",
+      text: "Vui lòng nhập số chương cần đọc",
+      icon: "error",
+      confirmButtonText: "Đóng"
+    });
     found = true;
   }
-  
-  if (chapter!= "") {
+
+  if (chapter != "") {
     for (let obj of content) {
       if (obj.innerText.search(regex) > 0) {
         page = parseInt(obj.id.match(/\d+/gi)[0]);
         found = true;
         show(page);
         highLight(obj, regex);
-      }
-      else {
+      } else {
         highLight(obj, regex);
       }
     }
@@ -120,7 +129,12 @@ function goToChapter() {
   }
 
   if (found == false) {
-    alert("Chương bạn kiếm hiện không có");
+    swal({
+      title: "NOT FOUND!",
+      text: "Chương bạn kiếm hiện không có",
+      icon: "error",
+      confirmButtonText: "Đóng"
+    });
   }
 }
 
